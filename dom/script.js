@@ -1,58 +1,52 @@
-// let myVar = "2";
-//console.log(myVa);
+let cards = []
+let sum = 0
+isAlive = false
+hasBlackJack = true
+let messageEl = document.querySelector("#message-el")
+let sumEl = document.querySelector("#sum-e1")
+let cardsEl = document.querySelector("#cards-e1")
 
-// let name = prompt("please enter your name")
+function randomcard(){
+    let randomNumber = Math.floor(Math.random()*13)+1;
+    console.log(randomNumber);
+    if(randomNumber > 10){
+        return 10
+    }
+    else{
+        return randomNumber 
+    }
 
-// console.log(name);
-//alert(name);
-
-//console.log((4/3).toFixed(4));
-// console.log(4%3);
-// let a = 46;
-// a++;
-// a++;
-// --a;
-// a += 10;
-// a *= 25;
-
-// console.log(a);
-
-// function fun(a,b) {
-//     console.log(a*b);
-// }
-
-// fun(2,3)
-
-// function buyingChocolate(a)
-
-// function r (){
-//     let random = Math.random()*6;
-//     return Math.floor(random +1 );
-
-// }
-// let output = r ()
-// console.log(output)
-
-// function largest(){
-//     if
-// }
-
-let students =[asad, ali, humayun, wasif, hanzala];
-
-function check (){
-    let studentsName = prompt("Enter your name");
-        for(let i = 0; i < students.length; i++);{
-            if(students[i]==studentsName)
-                console.log("you are welcome");
-                return
-        }
 }
-check()
 
-// let heading = document.querySelector("h1")
-// let button = document.querySelector("#btn")
+function startgame(){
+    let firstCard = randomcard()
+    let secondCard = randomcard()
 
-// button.addEventListener("click", ()=> {
-//     heading.textContent = " hello world"
+    cards = [firstCard, secondCard]
+    sum = firstCard + secondCard
+    rendergame()
+}
 
-// })
+function rendergame() {
+    for (let i = 0; i<cards.length; i++){
+        cardsE1.innerHTML+=cards[i] + ' '
+    }
+    sumE1.innerHTML = "sum : " + sum;
+    if(sum<=20){
+        messageE1.innerHTML = "Do you want to draw a new card"
+    }else if(sum == 21){
+        messageEl.innerHTML = "you have won the game"
+        hasBlackJack = true
+    }else{
+        messageE1.innerHTML = "you are out of the game"
+        isAlive = false;
+    }
+}
+function newCard(){
+    if(isAlive == true && hasBlackJack ==false){
+        let card = randomcard();
+        sum+=card
+        card.push(card);
+        rendergame();
+    }
+}
